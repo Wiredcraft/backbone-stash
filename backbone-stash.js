@@ -4,8 +4,11 @@
 // and Collections retrieve their respective models based on this convention.
 var _ = require('underscore');
 
-module.exports = function(filepath) {
-    var stash = require('stash')(filepath);
+module.exports = function(filepath, file) {
+    // Require WCL forked version of stash to support folder based stash instead of file based.
+    // file is optional, converting the storage to subfolders, using file as the file to store
+    // the model in.
+    var stash = require('stash')(filepath, file);
 
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
