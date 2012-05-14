@@ -4,7 +4,7 @@
     "author": "Young Hahn",
     "dependencies": {
         "underscore": ">= 1.1.5 < 1.2.0",
-        "stash": "= 0.0.2"
+        "stash": "git://github.com/Wiredcraft/stash.git#287c85d"
     },
     "licenses": [{ "type": "BSD" }],
     "main": "./backbone-stash"
