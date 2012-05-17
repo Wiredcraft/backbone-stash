@@ -29,8 +29,15 @@ module.exports = function(filepath, file) {
 
         switch (method) {
         case 'read':
-            var data,
-                base = stash.key(getUrl(model));
+            var data;
+            // get a different base if stash handled recursively
+            if (!file) {
+                // regular base
+                var base = stash.key(getUrl(model));
+            } else {
+                // strip the /api/models/ part of the URL
+                var base = stash.key(getUrl(model).replace(/\/[\w]+\/[\w]+(\/|)/, ''));
+            }
             if (model.id) {
                 data = stash.get(base);
                 return data ? success(data) : error('Model not found.');
@@ -71,4 +78,3 @@ module.exports = function(filepath, file) {
 
     return { stash: stash, sync: sync };
 };
-
